@@ -4,8 +4,8 @@ class CategoriesController < ApplicationController
   skip_before_action :warn_not_logged_in
 
   def index
-    @categories = Category.search(params[:search])
-    # @categories = Category.all
+    # @categories = Category.search(params[:search])
+    @categories = Category.all
   end
 
   def show
@@ -16,6 +16,22 @@ class CategoriesController < ApplicationController
       @subjects = Subject.search(params[:search]).where(:category_id => @category.id)
     else
       @subjects = @category.subjects.all
+    end
+  end
+
+  def search
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    puts params.inspect
+    puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+    if params[:search] == ''
+      @categories = []
+      @subjects = []
+    else
+      @categories = Category.search(params[:search])
+      @subjects = Subject.search(params[:search])
+      puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
+      puts @subjects
+      puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%"
     end
   end
 

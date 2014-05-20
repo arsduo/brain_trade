@@ -18,6 +18,8 @@ development:
   adapter: postgresql
   encoding: unicode
   database: brain_trade_development
+  username: postgres
+  password: password
   pool: 5
 
 
@@ -46,6 +48,8 @@ test:
   adapter: postgresql
   encoding: unicode
   database: brain_trade_test
+  username: postgres
+  password: password
   pool: 5
 
 

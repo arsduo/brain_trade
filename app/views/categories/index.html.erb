@@ -1,7 +1,7 @@
 <h1>Browse Learning Categories</h1>
 <br>
 
-<%= form_tag(categories_path, method: "get") do %>
+<%= form_tag(url_for(:controller => 'categories', :action => 'search'), method: "get") do %>
   <%= label_tag(:search, "") %>
   <%= text_field_tag(:search, params[:search], :placeholder => "Search by keyword") %>
   <%= submit_tag("Search", :name => nil, :class => "btn btn-primary search" ) %>
