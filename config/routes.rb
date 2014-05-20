@@ -6,6 +6,8 @@ BrainTrade::Application.routes.draw do
   match 'auth/:provider/callback', to: 'sessions#createoauth', via: [:get, :post]
   match 'auth/failure', to: redirect('/'), via: [:get, :post]
 
+  get 'search' => 'categories#search'
+
   resources :users
  
   resources :categories, only: [:index, :show]

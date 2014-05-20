@@ -6,7 +6,9 @@ class Subject < ActiveRecord::Base
 
     def self.search(search)
       if search
-        where 'name iLIKE ?', "%#{search}%"
+        blah = search.split(' ')
+        string = blah.join('%')
+        where 'name iLIKE ?', "%#{string}%"
       else
         scoped
       end
